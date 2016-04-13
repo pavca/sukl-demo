@@ -1,6 +1,10 @@
 # sukl-demo
 
-![Sukl Demo](https://github.com/pavca/sukl-demo/raw/master/img/sukl-demo.jpg)
+##Aplikace
+![Sukl Demo Aplikace](https://github.com/pavca/sukl-demo/raw/master/img/sukl-demo1.jpg)
+
+##Schema
+![Sukl Demo Schema](https://github.com/pavca/sukl-demo/raw/master/img/sukl-demo.jpg)
 
 ##Popis
 ###Sample01
