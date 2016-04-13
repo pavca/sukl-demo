@@ -117,7 +117,7 @@ service.put('/hlaseni/:id', function (req, res) {
   res.json({ zprava: 'PUT Response!' });
 });
 
-// REGISTRACE ROUTES 
+// REGISTRACE ROUTES pro REST webovou sluzbu
 // Prefix pro vsechna volani /sukl
 app.use('/sukl', service);
 

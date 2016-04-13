@@ -12,8 +12,6 @@
 var express    = require('express'); 
 var bodyParser = require('body-parser');
 
-// var suklData = require('./sukl-data');
-
 // Webova aplikace
 var app  = express(); 
 
@@ -40,89 +38,50 @@ app.get('/', function(req, res) {
     res.sendFile('index.html' , { root : __dirname});
 });
 
-// // Nacteni stranky pro zobrazeni evidovanych hlaseni
-// app.get('/seznam', function(req, res) {
-//     res.sendFile('hlaseni-seznam.html' , { root : __dirname});
-// });
-
-// // Nacteni stranky pro zalozeni noveho hlaseni
-// app.get('/nove', function(req, res) {
-//     res.sendFile('hlaseni-nove.html' , { root : __dirname});
-// });
-
 //
 // ROUTES pro REST webovou sluzbu
 //
 // Testovaci GET pozadavek
 service.get('/', function (req, res) {
-  res.json({ zprava: 'Testovaci GET pozadavek' });
+    res.json({ zprava: 'Testovaci GET pozadavek' });
 });
 
 // Testovaci POST pozadavek
 service.post('/', function (req, res) {
-  res.json({ zprava: 'Testovaci POST pozadavek' });
+    res.json({ zprava: 'Testovaci POST pozadavek' });
 });
 
 // GET pozadavek na nacteni seznamu aktivnich hlaseni
 service.get('/hlaseni', function (req, res) {
-  res.json({ zprava: 'GET pozadavek na nacteni seznamu aktivnich hlaseni' });
-    // suklData.vratHlaseniSeznam(function(error, result){
-    //     res.json({ zprava: 'OK', data: result });
-    // });
+    res.json({ zprava: 'GET pozadavek na nacteni seznamu aktivnich hlaseni' });
 });
 
 // POST pozadavek na ulozeni noveho hlaseni
 service.post('/hlaseni', function (req, res) {
-  res.json({ zprava: 'POST pozadavek na ulozeni noveho hlaseni' });
-    // var hlaseni = req.body;
-    // suklData.ulozHlaseni(hlaseni, function(error, result){
-    //     res.json({ zprava: 'OK', data: result });
-    // });
+    res.json({ zprava: 'POST pozadavek na ulozeni noveho hlaseni' });
 });
 
 // PUT pozadavek na obnoveni seznamu hlaseni
 service.put('/hlaseni', function (req, res) {
-  res.json({ zprava: 'PUT pozadavek na obnoveni seznamu hlaseni' });
-    // suklData.obnovHlaseniSeznam(function(error, result){
-    //     res.json({ zprava: 'OK', data: result });
-    // });
+    res.json({ zprava: 'PUT pozadavek na obnoveni seznamu hlaseni' });
 });
 
 // GET pozadavek na nacteni hlaseni podle systemoveho ID
 service.get('/hlaseni/:id', function (req, res) {
-  res.json({ zprava: 'GET pozadavek na nacteni hlaseni podle systemoveho ID' });
-    // var id = req.params.id;
-    // suklData.vratHlaseni(id, function(error, result){
-    //     if(error){
-    //         res.json({ zprava: 'ERROR', data: {} });
-    //     }
-    //     else{
-    //         res.json({ zprava: 'OK', data: result });
-    //     }
-    // });
+    res.json({ zprava: 'GET pozadavek na nacteni hlaseni podle systemoveho ID' });
 });
 
 // DELETE pozadavek na vymazani hlaseni 
 service.delete('/hlaseni/:id', function (req, res) {
-  res.json({ zprava: 'DELETE pozadavek na vymazani hlaseni' });
-    // var id = req.params.id;
-    // suklData.vymazHlaseni(id, function(error, result){
-    //     if(error){
-    //         res.json({ zprava: 'ERROR', data: {} });
-    //     }
-    //     else{
-    //         res.json({ zprava: 'OK', data: result });
-    //     }
-    // });
+    res.json({ zprava: 'DELETE pozadavek na vymazani hlaseni' });
 });
 
 // Pozadavek na update hlaseni 
 service.put('/hlaseni/:id', function (req, res) {
-    var id = req.params.id;
-  res.json({ zprava: 'PUT Response!' });
+    res.json({ zprava: 'PUT Response!' });
 });
 
-// REGISTRACE ROUTES 
+// REGISTRACE ROUTES pro REST webovou sluzbu
 // Prefix pro vsechna volani /sukl
 app.use('/sukl', service);
 

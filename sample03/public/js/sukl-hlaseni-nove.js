@@ -1,8 +1,10 @@
+/**
+ * sukl-hlaseni-nove.js
+ */
 
 function ViewModelHlaseniNove() {
     var self = this;
     
-    //self.hlaseni = ko.observable( { hlavicka: {}, polozky: [] } );
     self.hlavicka = ko.observable({});
     self.polozky = ko.observableArray([]);
     
@@ -29,20 +31,6 @@ function ViewModelHlaseniNove() {
             }
         };
 
-    //     $.ajax({
-    //         type: 'POST',
-    //         data: data,
-    //         url: '/sukl/hlaseni',
-    //         dataType: 'JSON'
-    //     }).done(function( response ) {
-    //         if(response.zprava == 'OK'){
-    //             self.hlavicka({});
-    //             self.polozky([]);
-    //         }
-    //         else{
-    //             alert(responze.zprava);
-    //         }
-    //     });
         sukl.services.cliHlaseni.ulozitHlaseni(data, function(err, res){
             if(res){
                 self.hlavicka({});
