@@ -1,0 +1,77 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug01",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}\\sample01\\server.js",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": "${workspaceRoot}\\sample01",
+			"preLaunchTask": null,
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"externalConsole": false,
+			"sourceMaps": false,
+			"outDir": null
+		},
+		{
+			"name": "Debug02",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}\\sample02\\server.js",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": "${workspaceRoot}\\sample02",
+			"preLaunchTask": null,
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"externalConsole": false,
+			"sourceMaps": false,
+			"outDir": null
+		},
+		{
+			"name": "Debug03",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}\\sample03\\server.js",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": "${workspaceRoot}\\sample03",
+			"preLaunchTask": null,
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"externalConsole": false,
+			"sourceMaps": false,
+			"outDir": null
+		},
+		{
+			"name": "Attach",
+			"type": "node",
+			"request": "attach",
+			"port": 5858,
+			"address": "localhost",
+			"restart": false,
+			"sourceMaps": false,
+			"outDir": null,
+			"localRoot": "${workspaceRoot}",
+			"remoteRoot": null
+		}
+	]
+}
