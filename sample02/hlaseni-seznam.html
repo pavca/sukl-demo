@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="cs" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>SUKL</title>
+    <link rel="stylesheet" href="public/js/bootstrap/v3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/sukl.css">
+
+    <script type="text/javascript" src="public/js/jquery/v1.12.3/jquery.min.js"></script>
+    <script type="text/javascript" src="public/js/bootstrap/v3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/js/knockout/v3.4.0/knockout.min.js"></script>
+    <script type="text/javascript" src="public/js/sukl-hlaseni-seznam.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row navigace">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/seznam">Seznam</a></li>
+                <li><a href="/nove">Nové hlášení</a></li>
+            </ul>
+        </div>
+        <h1>Seznam hlášení</h1>
+        
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span>Seznam</span>
+                        <span style="float: right;">
+                            <a href="#" data-bind="click: $root.obnovitSeznamHlaseni">Obnovit</a>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="hlaseni-seznam" data-bind="foreach: seznam">
+                            <li>
+                                <div class="hlaseni-item" >
+                                    <div data-bind="click: $root.nactiHlaseni">
+                                        <p data-bind="text: hlavicka.kodPracovisteDodavatele"></p>
+                                        <p data-bind="text: hlavicka.obdobiHlaseni"></p>
+                                        <p data-bind="text: hlavicka.idHlaseni"></p>
+                                        <p data-bind="text: hlavicka.typHlaseni"></p>
+                                    </div>
+                                    <div class="hlaseni-item-menu" >
+                                        <a href="#" data-bind="click: $root.vymazatHlaseni">Vymazat</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Hlášení</div>
+                    <div class="panel-body">
+                        <table style="background-color:#f5f5f5;width:100%;" data-bind="with: hlaseni">
+                            <tr>
+                                <td style="width:200px;text-align:right">ID hlášení:</td>
+                                <td style="padding-left:10px;font-weight:700;" colspan="5" data-bind="text: hlavicka.idHlaseni"></td>
+                            </tr>
+                            <tr>
+                                <td style="width:200px;text-align:right">Kód pracoviště dodavatele:</td>
+                                <td style="text-align:left;width:100px;padding-left:10px;font-weight:700;" data-bind="text: hlavicka.kodPracovisteDodavatele"></td>
+                                <td style="width:150px;text-align:right">Období hlášení:</td>
+                                <td style="text-align:left;padding-left:10px;font-weight:700;" data-bind="text: hlavicka.obdobiHlaseni"></td>
+                                <td style="width:100px;text-align:right">Typ hlášení:</td>
+                                <td style="text-align:left;width:100px;padding-left:10px;font-weight:700;" data-bind="text: hlavicka.typHlaseni"></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <table data-bind="with: hlaseni">
+                            <thead>
+                                <tr>
+                                    <th style="width:100px;text-align:right">Typ pohybu</th>
+                                    <th style="width:170px;text-align:right">Typ odběratele</th>
+                                    <th style="width:100px;text-align:right">Kód SUKL</th>
+
+                                    <th style="width:100px;text-align:right">Název</th>
+                                    <th style="width:100px;text-align:right">Množství</th>
+                                    <th style="width:100px;text-align:right">Šarže</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: polozky">
+                                <tr>
+                                    <td style="text-align:right" data-bind="text: typPohybuLP"></td>
+                                    <td style="text-align:right" data-bind="text: typOdberateleLP"></td>
+                                    <td style="text-align:right" data-bind="text: kodSUKL"></td>
+
+                                    <td style="text-align:right" data-bind="text: nazev"></td>
+                                    <td style="text-align:right" data-bind="text: mnozstvi"></td>
+                                    <td style="text-align:right" data-bind="text: sarze"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
