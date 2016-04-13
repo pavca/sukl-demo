@@ -3,7 +3,7 @@ function ViewModelHlaseniSeznam() {
     var self = this;
     
     self.seznam = ko.observableArray( [] );
-    self.hlaseni = ko.observable( {} );
+    self.hlaseni = ko.observable( { hlavicka: {}, polozky: {} } );
     
     self.vymazatHlaseni = function(item){
         $.ajax({
@@ -11,9 +11,8 @@ function ViewModelHlaseniSeznam() {
             url: '/sukl/hlaseni/' + item.id,
             dataType: 'JSON'
         }).done(function( response ) {
-                alert(response.zprava);
             if(response.zprava == 'OK'){
-                //self.seznam(response.data);
+                self.nactiSeznam();
             }
         });
     };
@@ -24,9 +23,12 @@ function ViewModelHlaseniSeznam() {
             url: '/sukl/hlaseni/' + item.id,
             dataType: 'JSON'
         }).done(function( response ) {
-                alert(response.zprava);
+                //alert(response.zprava);
             if(response.zprava == 'OK'){
                 self.hlaseni(response.data);
+                
+                var xxx = self.hlaseni().hlavicka;
+                var zzz = 1;
             }
         });
     };
