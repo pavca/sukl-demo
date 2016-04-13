@@ -1,6 +1,6 @@
 # sukl-demo
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Sukl Demo](https://github.com/pavca/sukl-demo/raw/master/img/sukl-demo.jpg)
 
 ##Popis
 ###Sample01
