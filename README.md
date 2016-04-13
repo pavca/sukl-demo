@@ -11,6 +11,12 @@
 * Založení webového aplikačního serveru
 * Založení webové, datové služby
 * Vytvoření testovacího REST rozhranní datové služby
+<ul>
+<li>GET - získání dat</li>
+<li>POST - vytvoření</li>
+<li>PUT - úpravy</li>
+<li>DELETE - smazání</li>
+</ul>
 * Testování REST rozhraní
 
 ###Sample02
