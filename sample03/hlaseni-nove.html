@@ -9,89 +9,73 @@
 
     <script type="text/javascript" src="public/js/jquery/v1.12.3/jquery.min.js"></script>
     <script type="text/javascript" src="public/js/bootstrap/v3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/js/knockout/v3.4.0/knockout.min.js"></script>
     <script type="text/javascript" src="public/js/sukl.js"></script>
+    <script type="text/javascript" src="public/js/sukl-hlaseni-nove.js"></script>
 </head>
 <body>
-    <div>
-        <nav>
+    <div class="container">
+        <div class="row navigace">
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/seznam">Seznam</a></li>
                 <li><a href="/nove">Nové hlášení</a></li>
             </ul>
-        </nav>
+        </div>
         <h1>Nové hlášení</h1>
+        
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Hlášení</div>
+                    <div class="panel-body">
+                        <div style="background-color:#f5f5f5;padding: 10px;">
+                            <table style="background-color:#f5f5f5;width:100%;" data-bind="with: hlaseni">
+                                <tr>
+                                    <td style="width:200px;text-align:right">ID hlášení:</td>
+                                    <td style="padding:10px;font-weight:700;" colspan="5"><input style="width:100%;" maxlength="36" data-bind="value: hlavicka.idHlaseni"></input></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:150px;text-align:right">Kód pracoviště dodavatele:</td>
+                                    <td style="text-align:left;width:100px;padding-left:10px;font-weight:700;"><input maxlength="20" data-bind="value: hlavicka.kodPracovisteDodavatele"></input></td>
+                                    <td style="width:150px;text-align:right">Období hlášení:</td>
+                                    <td style="text-align:left;padding-left:10px;font-weight:700;"><input maxlength="6" data-bind="value: hlavicka.obdobiHlaseni"></input></td>
+                                    <td style="width:100px;text-align:right">Typ hlášení:</td>
+                                    <td style="text-align:left;width:100px;padding-left:10px;font-weight:700;"><input maxlength="1" data-bind="value: hlavicka.typHlaseni"></input></td>
+                                </tr>
+                            </table>
+                        </div>
+                            
+                        <br>
+                        <table data-bind="with: hlaseni">
+                            <thead>
+                                <tr>
+                                    <th style="width:100px;text-align:right">Typ pohybu</th>
+                                    <th style="width:170px;text-align:right">Typ odběratele</th>
+                                    <th style="width:100px;text-align:right">Kód SUKL</th>
+
+                                    <th style="width:100px;text-align:right">Název</th>
+                                    <th style="width:100px;text-align:right">Množství</th>
+                                    <th style="width:100px;text-align:right">Šarže</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: polozky">
+                                <tr>
+                                    <td style="text-align:right" data-bind="text: typPohybuLP"></td>
+                                    <td style="text-align:right" data-bind="text: typOdberateleLP"></td>
+                                    <td style="text-align:right" data-bind="text: kodSUKL"></td>
+
+                                    <td style="text-align:right" data-bind="text: nazev"></td>
+                                    <td style="text-align:right" data-bind="text: mnozstvi"></td>
+                                    <td style="text-align:right" data-bind="text: sarze"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-<div id="addHlaseni">
-    <div>
-        <table id="hlavicka">
-            <tr>
-                <td>Kód pracoviště dodavatele:</td>
-                <td><input id="kod-pracoviste-dodavatele" type="text"></td>
-
-                <td>Období hlášení:</td>
-                <td><input id="obdobi-hlaseni" type="text"></td>
-            </tr>
-            <tr>
-                <td>ID hlášení:</td>
-                <td><input id="id-hlaseni" type="text"></td>
-
-                <td>Typ hlášení:</td>
-                <td><input id="typ-hlaseni" type="text"></td>
-                <!--<td id="typ-hlaseni" >
-                    <select>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                </td>-->
-            </tr>
-        </table> 
-         <br>
-        <table id="zaznamy">
-            <tr>
-                <td>Typ pohybu LP</td>
-                <td>Typ odběratele</td>
-                <td>Kód SÚKL</td>
-                <td>Název</td>
-                <td>Množství</td>
-                <td>Šarže</td>
-            </tr>
-        </table> 
-    </div>
-    <input id="odeslat-hlaseni" type="button" value="Odeslat"> 
-</div>
-
-<div>
-    <table id="zaznamy">
-        <tr>
-            <td>Typ pohybu LP</td>
-            <td><input id="typ-pohybu-lp" type="text"></td>
-        </tr>
-        <tr>
-            <td>Typ odběratele</td>
-            <td><input id="typ-odberatele" type="text"></td>
-        </tr>
-        <tr>
-            <td>Kód SÚKL</td>
-            <td><input id="kod-sukl" type="text"></td>
-        </tr>
-        <tr>
-            <td>Název</td>
-            <td><input id="nazev" type="text"></td>
-        </tr>
-        <tr>
-            <td>Množství</td>
-            <td><input id="mnozstvi" type="text"></td>
-        </tr>
-            <td>Šarže</td>
-            <td><input id="sarze" type="text"></td>
-        </tr>
-    </table> 
-    <input id="pridat-radek-hlaseni" type="button" value="Uložit"> 
-</div>
-
 </body>
 </html>

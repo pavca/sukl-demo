@@ -28,6 +28,10 @@ body{
     border-radius: 5px 5px 5px 5px;
     margin-bottom: 5px;
 }
+.hlaseni-item p{
+    margin: 0;
+}
+
 .hlaseni-item:hover {
     cursor: pointer;
     color: #fff;

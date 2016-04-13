@@ -59,6 +59,16 @@ function vymazHlaseni(id, cb){
     cb(null, g_hlaseni[index].id);
 }
 
+function obnovHlaseniSeznam(cb){
+    _.forEach(g_hlaseni, function(value) {
+        value.active = true;
+    });
+    
+    var result = _.filter(g_hlaseni, { 'active': true });
+    cb(null, result);
+}
+
 exports.vratHlaseniSeznam = vratHlaseniSeznam;
 exports.vratHlaseni = vratHlaseni;
 exports.vymazHlaseni = vymazHlaseni;
+exports.obnovHlaseniSeznam = obnovHlaseniSeznam;

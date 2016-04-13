@@ -1,6 +1,13 @@
-// server.js
+/**
+ * SUKL demo aplikacni server a REST webova sluzba.
+ * 
+ * server.js
+ * 13.04.2016
+ */
 
+//
 // BASE SETUP
+//
 // Import balíčků které budeme využívat
 var express    = require('express'); 
 var bodyParser = require('body-parser');
@@ -25,44 +32,65 @@ var port = process.env.PORT || 3001;
 
 app.use(express.static(__dirname));
 
+//
 // ROUTES pro webovou aplikaci
+//
+// Nacteni domovske stranky aplikace
 app.get('/', function(req, res) {
     res.sendFile('index.html' , { root : __dirname});
 });
 
+// Nacteni stranky pro zobrazeni evidovanych hlaseni
 app.get('/seznam', function(req, res) {
     res.sendFile('hlaseni-seznam.html' , { root : __dirname});
 });
 
+// Nacteni stranky pro zalozeni noveho hlaseni
 app.get('/nove', function(req, res) {
     res.sendFile('hlaseni-nove.html' , { root : __dirname});
 });
 
+//
 // ROUTES pro REST webovou sluzbu
+//
+// Testovaci GET pozadavek
 service.get('/', function (req, res) {
   res.json({ zprava: 'GET Response!' });
 });
 
+// Testovaci POST pozadavek
 service.post('/', function (req, res) {
   res.json({ zprava: 'POST Response!' });
 });
 
+// service.post('/hlaseni/add', function (req, res) {
+//   res.json({ zprava: 'POST Response!' });
+// });
+
+
+// GET pozadavek na nacteni seznamu aktivnich hlaseni
 service.get('/hlaseni', function (req, res) {
     suklData.vratHlaseniSeznam(function(error, result){
         res.json({ zprava: 'OK', data: result });
     });
 });
 
+// POST pozadavek na nacteni seznamu aktivnich hlaseni
 service.post('/hlaseni', function (req, res) {
     suklData.vratHlaseniSeznam(function(error, result){
         res.json({ zprava: 'OK', data: result });
     });
 });
 
-service.post('/hlaseni/add', function (req, res) {
-  res.json({ zprava: 'POST Response!' });
+// PUT pozadavek na obnoveni seznamu hlaseni
+service.put('/hlaseni', function (req, res) {
+    suklData.obnovHlaseniSeznam(function(error, result){
+        res.json({ zprava: 'OK', data: result });
+    });
+    //res.json({ zprava: 'PUT Response!' });
 });
 
+// Pozadavek na nacteni hlaseni podle systemoveho ID
 service.get('/hlaseni/:id', function (req, res) {
     var id = req.params.id;
     suklData.vratHlaseni(id, function(error, result){
@@ -75,6 +103,7 @@ service.get('/hlaseni/:id', function (req, res) {
     });
 });
 
+// Pozadavek na vymazani hlaseni 
 service.delete('/hlaseni/:id', function (req, res) {
     var id = req.params.id;
     suklData.vymazHlaseni(id, function(error, result){
@@ -87,6 +116,7 @@ service.delete('/hlaseni/:id', function (req, res) {
     });
 });
 
+// Pozadavek na update hlaseni 
 service.put('/hlaseni/:id', function (req, res) {
     var id = req.params.id;
   res.json({ zprava: 'PUT Response!' });

@@ -23,12 +23,8 @@ function ViewModelHlaseniSeznam() {
             url: '/sukl/hlaseni/' + item.id,
             dataType: 'JSON'
         }).done(function( response ) {
-                //alert(response.zprava);
             if(response.zprava == 'OK'){
                 self.hlaseni(response.data);
-                
-                var xxx = self.hlaseni().hlavicka;
-                var zzz = 1;
             }
         });
     };
@@ -41,6 +37,30 @@ function ViewModelHlaseniSeznam() {
         }).done(function( response ) {
             if(response.zprava == 'OK'){
                 self.seznam(response.data);
+                
+                var pocet = self.seznam().length;
+                if(pocet > 0)
+                    self.nactiHlaseni(self.seznam()[0]);
+                else
+                    self.hlaseni( { hlavicka: {}, polozky: {} } );
+            }
+        });
+    };
+    
+    self.obnovitSeznamHlaseni = function(){
+        $.ajax({
+            type: 'PUT',
+            url: '/sukl/hlaseni',
+            dataType: 'JSON'
+        }).done(function( response ) {
+            if(response.zprava == 'OK'){
+                self.seznam(response.data);
+                
+                var pocet = self.seznam().length;
+                if(pocet > 0)
+                    self.nactiHlaseni(self.seznam()[0]);
+                else
+                    self.hlaseni( { hlavicka: {}, polozky: {} } );
             }
         });
     };
@@ -50,6 +70,7 @@ function ViewModelHlaseniSeznam() {
     };
 }
 
+// JavaScript Pattern: Immediately-Invoked-Function-Expressions (IIFE)
 $(function () {
     var viewModel = new ViewModelHlaseniSeznam();
     ko.applyBindings(viewModel);
