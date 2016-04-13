@@ -63,11 +63,6 @@ service.post('/', function (req, res) {
   res.json({ zprava: 'POST Response!' });
 });
 
-// service.post('/hlaseni/add', function (req, res) {
-//   res.json({ zprava: 'POST Response!' });
-// });
-
-
 // GET pozadavek na nacteni seznamu aktivnich hlaseni
 service.get('/hlaseni', function (req, res) {
     suklData.vratHlaseniSeznam(function(error, result){
@@ -75,9 +70,10 @@ service.get('/hlaseni', function (req, res) {
     });
 });
 
-// POST pozadavek na nacteni seznamu aktivnich hlaseni
+// POST pozadavek na ulozeni noveho hlaseni
 service.post('/hlaseni', function (req, res) {
-    suklData.vratHlaseniSeznam(function(error, result){
+    var hlaseni = req.body;
+    suklData.ulozHlaseni(hlaseni, function(error, result){
         res.json({ zprava: 'OK', data: result });
     });
 });
@@ -87,7 +83,6 @@ service.put('/hlaseni', function (req, res) {
     suklData.obnovHlaseniSeznam(function(error, result){
         res.json({ zprava: 'OK', data: result });
     });
-    //res.json({ zprava: 'PUT Response!' });
 });
 
 // Pozadavek na nacteni hlaseni podle systemoveho ID

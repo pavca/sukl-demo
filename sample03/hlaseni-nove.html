@@ -10,7 +10,7 @@
     <script type="text/javascript" src="public/js/jquery/v1.12.3/jquery.min.js"></script>
     <script type="text/javascript" src="public/js/bootstrap/v3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="public/js/knockout/v3.4.0/knockout.min.js"></script>
-    <script type="text/javascript" src="public/js/sukl.js"></script>
+    <!--<script type="text/javascript" src="public/js/sukl.js"></script>-->
     <script type="text/javascript" src="public/js/sukl-hlaseni-nove.js"></script>
 </head>
 <body>
@@ -28,50 +28,61 @@
             
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Hlášení</div>
+                    <div class="panel-heading">
+                        <span>Hlášení</span>
+                        <span style="float: right;">
+                            <a href="#" data-bind="click: $root.ulozitHlaseni">Uložit</a>
+                        </span>
+                    </div>
                     <div class="panel-body">
                         <div style="background-color:#f5f5f5;padding: 10px;">
-                            <table style="background-color:#f5f5f5;width:100%;" data-bind="with: hlaseni">
+                            <table style="background-color:#f5f5f5;width:100%;">
                                 <tr>
                                     <td style="width:200px;text-align:right">ID hlášení:</td>
-                                    <td style="padding:10px;font-weight:700;" colspan="5"><input style="width:100%;" maxlength="36" data-bind="value: hlavicka.idHlaseni"></input></td>
+                                    <td style="padding:10px;" colspan="5"><input style="width:100%;" maxlength="36" data-bind="value: hlavicka().idHlaseni"></input></td>
                                 </tr>
                                 <tr>
                                     <td style="width:150px;text-align:right">Kód pracoviště dodavatele:</td>
-                                    <td style="text-align:left;width:100px;padding-left:10px;font-weight:700;"><input maxlength="20" data-bind="value: hlavicka.kodPracovisteDodavatele"></input></td>
+                                    <td style="text-align:left;width:100px;padding-left:10px;"><input maxlength="20" data-bind="value: hlavicka().kodPracovisteDodavatele"></input></td>
                                     <td style="width:150px;text-align:right">Období hlášení:</td>
-                                    <td style="text-align:left;padding-left:10px;font-weight:700;"><input maxlength="6" data-bind="value: hlavicka.obdobiHlaseni"></input></td>
+                                    <td style="text-align:left;padding-left:10px;"><input maxlength="6" data-bind="value: hlavicka().obdobiHlaseni"></input></td>
                                     <td style="width:100px;text-align:right">Typ hlášení:</td>
-                                    <td style="text-align:left;width:100px;padding-left:10px;font-weight:700;"><input maxlength="1" data-bind="value: hlavicka.typHlaseni"></input></td>
+                                    <td ><input maxlength="1" data-bind="value: hlavicka().typHlaseni"></input></td>
                                 </tr>
                             </table>
                         </div>
                             
                         <br>
-                        <table data-bind="with: hlaseni">
+                        <div>
+                        <table>
                             <thead>
                                 <tr>
-                                    <th style="width:100px;text-align:right">Typ pohybu</th>
-                                    <th style="width:170px;text-align:right">Typ odběratele</th>
-                                    <th style="width:100px;text-align:right">Kód SUKL</th>
+                                    <th style="width:150px">Typ pohybu</th>
+                                    <th >Typ odběratele</th>
+                                    <th style="width:100px">Kód SUKL</th>
 
-                                    <th style="width:100px;text-align:right">Název</th>
-                                    <th style="width:100px;text-align:right">Množství</th>
-                                    <th style="width:100px;text-align:right">Šarže</th>
+                                    <th style="width:100px;">Název</th>
+                                    <th style="width:100px;">Množství</th>
+                                    <th style="width:100px;">Šarže</th>
+                                    <th style="width:100px;">&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody data-bind="foreach: polozky">
                                 <tr>
-                                    <td style="text-align:right" data-bind="text: typPohybuLP"></td>
-                                    <td style="text-align:right" data-bind="text: typOdberateleLP"></td>
-                                    <td style="text-align:right" data-bind="text: kodSUKL"></td>
+                                    <td style="padding:2px;"><input style="width:150px" maxlength="10" data-bind="value: typPohybuLP"></input></td>
+                                    <td style="padding:2px;"><input maxlength="10" data-bind="value: typOdberateleLP"></input></td>
+                                    <td style="padding:2px;"><input maxlength="7" data-bind="value: kodSUKL"></input></td>
 
-                                    <td style="text-align:right" data-bind="text: nazev"></td>
-                                    <td style="text-align:right" data-bind="text: mnozstvi"></td>
-                                    <td style="text-align:right" data-bind="text: sarze"></td>
+                                    <td style="padding:2px;"><input maxlength="70" data-bind="value: nazev"></input></td>
+                                    <td style="padding:2px;"><input maxlength="9" data-bind="value: mnozstvi"></input></td>
+                                    <td style="padding:2px;"><input maxlength="70" data-bind="value: sarze"></td>
+                                    <td style="padding:2px;"><a href="#" data-bind='click: $root.odstranitPolozku'>Vymazat</a></td>
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
+                        <br>
+                        <button data-bind='click: pridatPolozku'>Přidat položku</button>
                     </div>
                 </div>
             </div>
