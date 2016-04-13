@@ -1,3 +1,7 @@
+/**
+ * sukl-data.js
+ */
+
 var _ = require('lodash-node'); 
 
 var g_hlaseni = [

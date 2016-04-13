@@ -29,18 +29,27 @@ function ViewModelHlaseniNove() {
             }
         };
 
-        $.ajax({
-            type: 'POST',
-            data: data,
-            url: '/sukl/hlaseni',
-            dataType: 'JSON'
-        }).done(function( response ) {
-            if(response.zprava == 'OK'){
+    //     $.ajax({
+    //         type: 'POST',
+    //         data: data,
+    //         url: '/sukl/hlaseni',
+    //         dataType: 'JSON'
+    //     }).done(function( response ) {
+    //         if(response.zprava == 'OK'){
+    //             self.hlavicka({});
+    //             self.polozky([]);
+    //         }
+    //         else{
+    //             alert(responze.zprava);
+    //         }
+    //     });
+        sukl.services.cliHlaseni.ulozitHlaseni(data, function(err, res){
+            if(res){
                 self.hlavicka({});
                 self.polozky([]);
             }
             else{
-                alert(responze.zprava);
+                alert(res.zprava);
             }
         });
     };

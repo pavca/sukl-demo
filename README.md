@@ -1,5 +1,20 @@
 # sukl-demo
 
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
+##Popis
+###Sample01
+* Založení webového aplikačního serveru
+* Založení webové, datové služby
+* Vytvoření testovacího REST rozhranní datové služby
+* Testování REST rozhraní
+
+###Sample02
+* Vytvoření webového klienta
+* Doplnění funcionality REST rozhranní datové služby
+
+###Sample03
+* Úprava webového klienta vytvořením obecného klientského modulu k REST rozhranní
 
 ##Požadavky
 * nainstalováno [Node.js 4.x](https://nodejs.org/)
